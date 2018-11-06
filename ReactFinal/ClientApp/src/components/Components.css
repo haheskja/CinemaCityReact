@@ -1,0 +1,27 @@
+﻿.faqStyle {
+    margin-bottom: 10px;
+    padding: 20px;
+    background-color: #232323;
+    cursor: pointer;
+}
+
+.questionBox {
+    margin-bottom: 10px;
+    padding: 20px 20px 20px 10px;
+    background-color: #232323;
+}
+
+.userQuestionBox {
+    margin-bottom: 10px;
+    padding: 20px 20px 20px 10px;
+    background-color: #333333;
+}
+
+.glyphicon.glyphicon-chevron-up,
+.glyphicon.glyphicon-chevron-down {
+    font-size: 20px;
+}
+
+.glyphicon{
+    cursor: pointer;    
+}
