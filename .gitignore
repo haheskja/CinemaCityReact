@@ -3,3 +3,4 @@
 ################################################################################
 
 /.vs/ReactFinal/v15/Server/sqlite3/db.lock
+/ReactFinal/ClientApp/package-lock.json
