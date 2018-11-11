@@ -2,9 +2,6 @@
 import './Components.css';
 import { Glyphicon, Media } from 'react-bootstrap';
 
-//TODO: If you first upvote and then downvote, you will first send an upvote to server and then a downvote, basically negating each other. Needs to be fixed
-
-
 export class QuestionElement extends React.Component {
     constructor(props) {
         super(props);
@@ -16,18 +13,27 @@ export class QuestionElement extends React.Component {
 
     upvote() {
         if (!this.state.upvoted) {
+            const rating = {
+                Id: this.props.id,
+                IncrementBy: 0
+            }
             if (this.state.downvoted) {
-                QuestionElement.upvoteTwiceToDatabase(this.props.id);
+                rating.IncrementBy = 2;
             }
             else {
-                QuestionElement.upvoteToDatabase(this.props.id);
+                rating.IncrementBy = 1;
             }
+            QuestionElement.updateRating(rating);
             let rating2 = this.props.rating;
             rating2++;
             this.setState({ upvoted: true, downvoted: false, viewrating: rating2 });
         }
         else {
-            QuestionElement.downvoteToDatabase(this.props.id);
+            const rating = {
+                Id: this.props.id,
+                IncrementBy: -1
+            }
+            QuestionElement.updateRating(rating);
             let rating2 = this.props.rating;
             this.setState({ upvoted: false, downvoted: false, viewrating: rating2 });
         }
@@ -35,82 +41,46 @@ export class QuestionElement extends React.Component {
 
     downvote() {
         if (!this.state.downvoted) {
+            const rating = {
+                Id: this.props.id,
+                IncrementBy: 0
+            }
             if (this.state.upvoted) {
-                QuestionElement.downvoteTwiceToDatabase(this.props.id);
+                rating.IncrementBy = -2;
             }
             else {
-                QuestionElement.downvoteToDatabase(this.props.id);
+                rating.IncrementBy = -1;
             }
+            QuestionElement.updateRating(rating);
             let rating2 = this.props.rating;
             rating2--;
             this.setState({ upvoted: false, downvoted: true, viewrating: rating2 });
         }
         else {
-            QuestionElement.upvoteToDatabase(this.props.id);
+            const rating = {
+                Id: this.props.id,
+                IncrementBy: 1
+            }
+            QuestionElement.updateRating(rating);
             let rating2 = this.props.rating;
             this.setState({ upvoted: false, downvoted: false, viewrating: rating2 });
         }
     }
 
-    static upvoteToDatabase(id) {
+    static updateRating(rating) {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
         const options = {
             method: "POST",
             headers,
-            body: JSON.stringify(id),
+            body: JSON.stringify(rating),
         };
 
-        const request = new Request('api/Service', options);
+        const request = new Request('api/Question/' + rating.Id, options);
         const response = fetch(request);
         const status = response.status;
     }
-    static upvoteTwiceToDatabase(id) {
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        const options = {
-            method: "POST",
-            headers,
-            body: JSON.stringify(id),
-        };
-
-        const request = new Request('api/Service/Add2Rating', options);
-        const response = fetch(request);
-        const status = response.status;
-    }
-
-    static downvoteToDatabase(id) {
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        const options = {
-            method: "POST",
-            headers,
-            body: JSON.stringify(id),
-        };
-
-        const request = new Request('api/Service/RemoveRating', options);
-        const response = fetch(request);
-        const status = response.status;
-    }
-    static downvoteTwiceToDatabase(id) {
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        const options = {
-            method: "POST",
-            headers,
-            body: JSON.stringify(id),
-        };
-
-        const request = new Request('api/Service/Remove2Rating', options);
-        const response = fetch(request);
-        const status = response.status;
-    }
-
-
 
     render() {
 

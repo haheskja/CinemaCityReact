@@ -45,24 +45,7 @@ namespace ReactFinal
             }).ToList();
             return output;
         }
-        public bool addQuestion()
-        {
-            Question output = new Question()
-            {
-                Text = "Where can I do stuff?",
-                Rating = 1
-            };
-            try
-            {
-                _context.Question.Add(output);
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            return true;
-        }
+        
         public List<DomainQuestion> getAllQuestion()
         {
 
@@ -75,13 +58,14 @@ namespace ReactFinal
             }).ToList();
             return output;
         }
-        public bool addRating(int Id)
+        public bool updateRating(Rating rating)
         {
 
-            Question output = _context.Question.Find(Id);
+            Question output = _context.Question.Find(rating.Id);
             try
             {
-                output.Rating += 1;
+                
+                output.Rating += rating.IncrementBy;
                 _context.SaveChanges();
             }
             catch (Exception ex)
@@ -90,51 +74,7 @@ namespace ReactFinal
             }
             return true;
         }
-        public bool add2Rating(int Id)
-        {
-
-            Question output = _context.Question.Find(Id);
-            try
-            {
-                output.Rating += 2;
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            return true;
-        }
-        public bool remove2Rating(int Id)
-        {
-
-            Question output = _context.Question.Find(Id);
-            try
-            {
-                output.Rating -= 2;
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            return true;
-        }
-        public bool removeRating(int Id)
-        {
-
-            Question output = _context.Question.Find(Id);
-            try
-            {
-                output.Rating -= 1;
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            return true;
-        }
+        
         public bool addQuestion(DomainQuestion input)
         {
 

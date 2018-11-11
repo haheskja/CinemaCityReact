@@ -4,6 +4,7 @@ import { QuestionForm } from './QuestionForm';
 import { QuestionElement } from './QuestionElement';
 import { UserQuestion } from './UserQuestion';
 
+
 export class Questions extends React.Component {
     displayName = Questions.name
 
@@ -16,7 +17,7 @@ export class Questions extends React.Component {
     }
 
     getQuestions() {
-        fetch('api/Service/GetQuestions')
+        fetch('api/Question')
             .then(response => response.json())
             .then(data => {
                 this.setState({ questions: data, loading: false });
@@ -45,7 +46,7 @@ export class Questions extends React.Component {
             body: JSON.stringify(data),
         };
 
-        const request = new Request('api/Service/AddQuestion', options);
+        const request = new Request('api/Question', options);
         const response = fetch(request);
         const status = response.status;
         this.setState({ userQuestHeader: data.Header, userQuestBody: data.Text, hasAsked: true });
@@ -59,7 +60,7 @@ export class Questions extends React.Component {
             <div>
                 <h1>Questions</h1>
                 <QuestionForm onClick={this.addQuestion} />
-                <UserQuestion hasAsked={this.state.hasAsked} header={this.state.userQuestHeader} text={this.state.userQuestBody}/>
+                <UserQuestion hasAsked={this.state.hasAsked} header={this.state.userQuestHeader} text={this.state.userQuestBody} />
                 {contents}
             </div>
         );

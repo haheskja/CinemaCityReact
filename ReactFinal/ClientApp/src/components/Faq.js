@@ -32,7 +32,7 @@ export class Faq extends React.Component {
         super(props);
         this.state = { faqs: [], loading: true };
 
-        fetch('api/Service')
+        fetch('api/FAQ')
             .then(response => response.json())
             .then(data => {
                 this.setState({ faqs: data, loading: false });

@@ -4,6 +4,7 @@ import { Glyphicon, Media } from 'react-bootstrap';
 
 
 
+
 export class UserQuestion extends React.Component {
     constructor(props) {
         super(props);
@@ -40,9 +41,9 @@ export class UserQuestion extends React.Component {
             ? null
             : this.renderQuestion();
         return (
-                <div>
+            <div>
                 {contents}
-                </div>
+            </div>
         );
     }
 }

@@ -18,4 +18,10 @@ namespace ReactFinal.Models
         public string Text { get; set; }
         public int Rating { get; set; }
     }
+
+    public class Rating
+    {
+        public int Id { get; set; }
+        public int IncrementBy { get; set; }
+    }
 }

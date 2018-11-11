@@ -31,6 +31,15 @@ namespace ReactFinal.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Faq");
+
+                    b.HasData(
+                        new { Id = 1, Answer = "You can currently not change this yourself, please contact an admin.", Question = "How can I change my account info?" },
+                        new { Id = 2, Answer = "We are working with major movie studios, stay tuned!", Question = "When will you update your inventory?" },
+                        new { Id = 3, Answer = "Yes! Contact mail@cinemacity.com", Question = "Are you hiring?" },
+                        new { Id = 4, Answer = "Make sure you have enough space on your computer and that CinemaCity isn't blocked.", Question = "My movies are not downloading!" },
+                        new { Id = 5, Answer = "To mail@cinemacity.com :)", Question = "Where can I send tips?" },
+                        new { Id = 6, Answer = "Please submit a detailed bug report to mail@cinemacity.com and we'll be on it immediately!", Question = "Cart always crashes!" }
+                    );
                 });
 
             modelBuilder.Entity("ReactFinal.Models.Question", b =>
