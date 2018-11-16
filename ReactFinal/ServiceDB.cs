@@ -55,7 +55,8 @@ namespace ReactFinal
                 Header = k.Header,
                 Text = k.Text,
                 Rating = k.Rating
-            }).ToList();
+            }).OrderByDescending(o => o.Rating).ToList();
+
             return output;
         }
         public bool updateRating(Rating rating)

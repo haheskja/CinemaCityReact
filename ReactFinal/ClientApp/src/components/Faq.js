@@ -19,7 +19,7 @@ class FaqElement extends React.Component {
         return (
             <div>
                 <h2 className="faqStyle" onClick={this.onClick}>{this.props.question} </h2>
-                {this.state.showAnswer ? <p>{this.props.answer}</p> : null}
+                {this.state.showAnswer ? <p className="faqAnswer">{this.props.answer}</p> : null}
             </div>
         );
     }

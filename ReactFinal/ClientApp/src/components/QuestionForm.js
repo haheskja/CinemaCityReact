@@ -1,6 +1,6 @@
 import React from 'react';
 import './Components.css';
-import { FormGroup, FormControl, Button, ControlLabel } from 'react-bootstrap';
+import { FormGroup, FormControl, Button } from 'react-bootstrap';
 
 export class QuestionForm extends React.Component {
     displayName = QuestionForm.name
@@ -15,13 +15,13 @@ export class QuestionForm extends React.Component {
 
     getHeaderValidationState() {
         const length = this.state.header.length;
-        if (length < 5) return 'error';
+        if (length < 5 || this.state.header.match(/[^a-zA-Z0-9\s.,?!"'-]/)) return 'error';
         else if (length > 4) return 'success';
         return null;
     }
     getBodyValidationState() {
         const length = this.state.body.length;
-        if (length < 10) return 'error';
+        if (length < 10 || this.state.header.match(/[^a-zA-Z0-9\s.,?!"'-]/)) return 'error';
         else if (length > 9) return 'success';
         return null;
     }
@@ -39,7 +39,9 @@ export class QuestionForm extends React.Component {
                 Header: this.state.header,
                 Text: this.state.body
             }
-            this.props.onClick(data);
+        this.setState({ header: '', body: '' });
+
+        this.props.onClick(data);
         }
         
 
@@ -54,8 +56,8 @@ export class QuestionForm extends React.Component {
                 >
                     <FormControl
                         type="text"
-                        value={this.state.value}
-                        placeholder="Question header"
+                        value={this.state.header}
+                        placeholder="Subject"
                         onChange={this.handleHeaderChange}
                     />
                     <FormControl.Feedback />
@@ -68,7 +70,7 @@ export class QuestionForm extends React.Component {
                     <FormControl
                         componentClass="textarea"
                         value={this.state.body}
-                        placeholder="Question body"
+                        placeholder="Question"
                         onChange={this.handleBodyChange}
                     />
                     <FormControl.Feedback />

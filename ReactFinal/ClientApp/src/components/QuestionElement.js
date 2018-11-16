@@ -78,17 +78,16 @@ export class QuestionElement extends React.Component {
         };
 
         const request = new Request('api/Question/' + rating.Id, options);
-        const response = fetch(request);
-        const status = response.status;
+        fetch(request);
     }
 
     render() {
 
         let isUpvoted = this.state.upvoted ?
-            <Glyphicon glyph='arrow-up' style={{ color: '#ffc107' }} /> :
+            <Glyphicon glyph='arrow-up' style={{ color: '#FF8b60' }} /> :
             <Glyphicon glyph='arrow-up' />;
         let isDownvoted = this.state.downvoted ?
-            <Glyphicon glyph='arrow-down' style={{ color: '#af320f' }} /> :
+            <Glyphicon glyph='arrow-down' style={{ color: '#9494FF' }} /> :
             <Glyphicon glyph='arrow-down' />;
         return (
             <div className="questionBox">

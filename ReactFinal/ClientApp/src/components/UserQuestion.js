@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import './Components.css';
-import { Glyphicon, Media } from 'react-bootstrap';
+import { Media } from 'react-bootstrap';
 
 
 
@@ -19,10 +19,8 @@ export class UserQuestion extends React.Component {
             <div className="userQuestionBox">
                 <Media>
                     <Media.Left align="top">
-                        <div className="text-center"><Glyphicon glyph='arrow-up' style={{ color: '#ffc107' }} /></div>
                         <div className="text-center">1</div>
-                        <div className="text-center"><Glyphicon glyph='arrow-down' /></div>
-                    </Media.Left>
+                        </Media.Left>
                     <Media.Body>
                         <Media.Heading>{this.props.header}</Media.Heading>
                         <p>

@@ -27,10 +27,11 @@ namespace ReactFinal.Controllers
         }
 
         [HttpPost]
-        public bool Post([FromBody] DomainQuestion value)
+        public List<DomainQuestion> Post([FromBody] DomainQuestion value)
         {
             var ServiceDB = new ServiceDB(_context);
-            return ServiceDB.addQuestion(value);
+            bool boolean = ServiceDB.addQuestion(value);
+            return ServiceDB.getAllQuestion();
         }
 
         [HttpPost("{id}")]

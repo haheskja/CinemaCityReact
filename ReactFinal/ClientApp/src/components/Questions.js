@@ -2,7 +2,7 @@ import React from 'react';
 import './Components.css';
 import { QuestionForm } from './QuestionForm';
 import { QuestionElement } from './QuestionElement';
-import { UserQuestion } from './UserQuestion';
+import { Alert } from 'react-bootstrap';
 
 
 export class Questions extends React.Component {
@@ -47,20 +47,25 @@ export class Questions extends React.Component {
         };
 
         const request = new Request('api/Question', options);
-        const response = fetch(request);
-        const status = response.status;
-        this.setState({ userQuestHeader: data.Header, userQuestBody: data.Text, hasAsked: true });
+        fetch(request)
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ questions: data, hasAsked: true  });
+            });
     }
 
     render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
             : Questions.renderQuestions(this.state.questions);
+        let hasasked = this.state.hasAsked
+            ? <Alert bsStyle="success">Question was added</Alert>
+            : null;
         return (
             <div>
                 <h1>Questions</h1>
                 <QuestionForm onClick={this.addQuestion} />
-                <UserQuestion hasAsked={this.state.hasAsked} header={this.state.userQuestHeader} text={this.state.userQuestBody} />
+                {hasasked}
                 {contents}
             </div>
         );

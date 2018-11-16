@@ -8,7 +8,13 @@ export class NavMenu extends React.Component {
 
   render() {
       return (
-          <Navbar className="backgroundNav" fixedTop fluid collapseOnSelect >
+          <Navbar className="backgroundNav" fixedTop fluid collapseOnSelect>
+            <Navbar.Header>
+                <Navbar.Brand>
+                    CinemaCity
+                </Navbar.Brand>
+                <Navbar.Toggle />
+            </Navbar.Header>
             <Navbar.Collapse>
                 <Nav>
                     <LinkContainer to={'/'} exact>
