@@ -1,14 +1,18 @@
-Har valgt å gjøre oppgaven i React WebApi.
+Obligatory assignment 3 in Web Applications at OsloMet.
 
-For å kjøre løsningen er det viktig å ha installert node.js og core 2.1 (hadde ikke tilgang på Core 2.0) på pcen. 
-Har testet på en annen pc med ny installasjon av Visual Studio og dette var det jeg måtte gjøre:
+Web application done in React and .NET Core 2.1. Is supposed to be the FAQ page for MovieTime and MovieTime2.
+
+Har valgt Ã¥ gjÃ¸re oppgaven i React WebApi.
+
+For Ã¥ kjÃ¸re lÃ¸sningen er det viktig Ã¥ ha installert node.js og core 2.1 (hadde ikke tilgang pÃ¥ Core 2.0) pÃ¥ pcen. 
+Har testet pÃ¥ en annen pc med ny installasjon av Visual Studio og dette var det jeg mÃ¥tte gjÃ¸re:
 	1. Installere Node.js
-	2. Løsning kjører i Core 2.1, så dette måtte være installert. Dette var allerede OK. 
-	3. Åpne prosjektet i Visual Studio
-	4. Gå til Tools > NuGet Packet Manager > Package Manager Console
-	5. I konsollvinduet skrive "Update-Database" for å lage ny lokal DB fra migrasjon/init
-	6. Da skal prosjektet kjøres med FAQs fra databasen og en tom Spørsmåls-tabell
+	2. LÃ¸sning kjÃ¸rer i Core 2.1, sÃ¥ dette mÃ¥tte vÃ¦re installert. Dette var allerede OK. 
+	3. Ã…pne prosjektet i Visual Studio
+	4. GÃ¥ til Tools > NuGet Packet Manager > Package Manager Console
+	5. I konsollvinduet skrive "Update-Database" for Ã¥ lage ny lokal DB fra migrasjon/init
+	6. Da skal prosjektet kjÃ¸res med FAQs fra databasen og en tom SpÃ¸rsmÃ¥ls-tabell
 
-Har valgt å ikke lage noe søke-funksjon til siden da jeg ikke synes dette passer inn.
-Hadde oppgaven vært å implementere en komplett Customer Support Modul med kategorier, funksjonalitet for mange spørsmål og svar ville jeg gjort det.
-Men siden oppgaven er å lage FAQ burde det bare inneholde de viktigste spørsmålene kundene kan ha, og ikke en stor tung side.
+Har valgt Ã¥ ikke lage noe sÃ¸ke-funksjon til siden da jeg ikke synes dette passer inn.
+Hadde oppgaven vÃ¦rt Ã¥ implementere en komplett Customer Support Modul med kategorier, funksjonalitet for mange spÃ¸rsmÃ¥l og svar ville jeg gjort det.
+Men siden oppgaven er Ã¥ lage FAQ burde det bare inneholde de viktigste spÃ¸rsmÃ¥lene kundene kan ha, og ikke en stor tung side.
